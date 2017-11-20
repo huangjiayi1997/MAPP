@@ -12,6 +12,7 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuInflater;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
@@ -72,6 +73,40 @@ public class MainActivity extends AppCompatActivity {
                 break;//allow refresh
         }
     }
+
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+       // Log.d("event error","0");
+        //Reference: http://www.vogella.com/tutorials/AndroidActionBar/article.html
+        MenuInflater inflater = getMenuInflater();
+       // Log.d("event error","9");
+        inflater.inflate(R.menu.about_menu, menu);
+        //Log.d("event error","8");
+        return true;
+    }//all executed
+
+    @Override
+    //use this to do hamburger
+    public boolean onOptionsItemSelected(MenuItem item) {
+        Log.d("event error","7");
+        switch (item.getItemId()) {
+
+            // action with ID action_goto_add_customer was selected
+            case R.id.About_app:
+                Log.d("event error","5");
+                Intent i = new Intent(MainActivity.this,AboutEvent.class);
+                Log.d("event error","b");
+                startActivity(i);
+                Log.d("event error","a");
+                break;
+            default:
+                break;
+        }
+        return true;
+    }
+
+    
     protected void loadEvents() {
         //TextView textViewResults = findViewById(R.id.ViewEvent);//this line causes the result to display in line without formatting
 

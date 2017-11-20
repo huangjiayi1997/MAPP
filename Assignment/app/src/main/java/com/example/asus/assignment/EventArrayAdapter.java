@@ -108,6 +108,7 @@ public class EventArrayAdapter extends RecyclerView.Adapter<EventArrayAdapter.Vi
             break;
                 case R.id.Button_Delete:
                     Log.d("delete operation","insert code below");
+
                     break;
             }
 
