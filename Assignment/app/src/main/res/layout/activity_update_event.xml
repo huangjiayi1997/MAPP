@@ -5,9 +5,15 @@
 
     <LinearLayout android:layout_height="fill_parent" android:layout_width="match_parent" android:orientation="vertical">
 
-    <EditText android:layout_height="wrap_content" android:layout_width="match_parent" android:id="@+id/EditText_title" android:textSize="10pt" android:hint="Event Title"> </EditText>
+    <EditText android:layout_height="wrap_content" android:layout_width="match_parent" android:id="@+id/EditText_title" android:textSize="10pt" > </EditText>
 
-    <EditText android:layout_height="wrap_content" android:layout_width="match_parent" android:id="@+id/EditText_time" android:textSize="10pt" android:hint="Time"> </EditText>
+    <EditText android:layout_height="wrap_content" android:layout_width="match_parent" android:id="@+id/EditText_time" android:textSize="10pt"> </EditText>
+
+        <EditText android:layout_height="wrap_content" android:layout_width="match_parent" android:id="@+id/EditText_date" android:textSize="10pt" > </EditText>
+
+        <EditText android:layout_height="wrap_content" android:layout_width="match_parent" android:id="@+id/EditText_notification" android:textSize="10pt"> </EditText>
+
+
 
     <Button android:layout_height="wrap_content" android:layout_width="match_parent" android:id="@+id/Button_Save" android:text="Save"> </Button>
 

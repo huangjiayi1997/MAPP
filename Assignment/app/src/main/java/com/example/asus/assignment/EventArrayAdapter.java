@@ -24,7 +24,7 @@ public class EventArrayAdapter extends RecyclerView.Adapter<EventArrayAdapter.Vi
     private ArrayList <AppEvent> EventArrayList;
     // Constructor of the class
     public EventArrayAdapter(int layoutId, ArrayList<AppEvent> itemList, RecyclerViewClickListener listener) {
-        //listItemLayout = layoutId;
+        listItemLayout = layoutId;
         this.EventArrayList = itemList;
         this.mListener = listener;
     }
@@ -41,7 +41,7 @@ public class EventArrayAdapter extends RecyclerView.Adapter<EventArrayAdapter.Vi
     // specify the row layout file and click for each row
     @Override
     public ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
-        View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.event_list_item, parent, false);
+        View view = LayoutInflater.from(parent.getContext()).inflate(listItemLayout, parent, false);
         ViewHolder myViewHolder = new ViewHolder(view,this.mListener);
         return myViewHolder;
     }
@@ -53,18 +53,25 @@ public class EventArrayAdapter extends RecyclerView.Adapter<EventArrayAdapter.Vi
         //to display the customer data inside each recyclerview rows.
         TextView textView_title = holder.textView_title;
         TextView textView_time = holder.textView_time;
+        TextView textView_date = holder.textView_date;
+        TextView textView_notification = holder.textView_notification;
+
         textView_title.setText(EventArrayList.get(listPosition).getTitle());
         textView_time.setText(EventArrayList.get(listPosition).getTime());
+        textView_date.setText(EventArrayList.get(listPosition).getDate());
+        textView_notification.setText(EventArrayList.get(listPosition).getNotification());
     }
 
     // Static inner class to initialize the views of rows
     static class ViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
         public TextView textView_title;
         public TextView textView_time;
+        public TextView textView_date;
+        public TextView textView_notification;
         public Button button_edit;
+        public Button button_delete;
 
 
-        //public Button button_delete;
 
 
         private RecyclerViewClickListener mListener;
@@ -77,25 +84,32 @@ public class EventArrayAdapter extends RecyclerView.Adapter<EventArrayAdapter.Vi
             //the customer_liest_item.xml.
             textView_title = (TextView) itemView.findViewById(R.id.TextView_title);
             textView_time = (TextView) itemView.findViewById(R.id.TextView_time);
+            textView_date=(TextView)itemView.findViewById(R.id.TextView_date);
+            textView_notification=(TextView)itemView.findViewById(R.id.TextView_Notification);
 
             //for edit in list
             button_edit = (Button) itemView.findViewById(R.id.Button_Edit);
+            button_delete=(Button) itemView.findViewById(R.id.Button_Delete);
 
-            //for delete in list
-            //button_delete=(Button) itemView.findViewById(R.id.Button_Delete);
 
             //Defined a click listener only for the button which has the edit icon
             button_edit.setOnClickListener(this);
+            button_delete.setOnClickListener(this);
 
-            //Defined a click listener only for the button which has the delete icon
-            //button_delete.setOnClickListener(this);
 
         }
         @Override
         public void onClick(View view) {
-            Log.d("onclick", "onClick " + getLayoutPosition() + " " + textView_title.getText());
+            int id= view.getId();
+            switch (id){
+            case R.id.Button_Edit:
+            Log.d("onclick000000", "onClick " + getLayoutPosition() + " " + textView_title.getText());
             mListener.onClick(view, getAdapterPosition());
-        }
+            break;
+                case R.id.Button_Delete:
+                    Log.d("delete operation","insert code below");
+                    break;
+            }
 
 
 
@@ -104,4 +118,4 @@ public class EventArrayAdapter extends RecyclerView.Adapter<EventArrayAdapter.Vi
 
 
 
-}
+}}

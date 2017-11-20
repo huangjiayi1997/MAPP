@@ -64,7 +64,7 @@ public class DB_data_source {
     }
 
   //update
-    public boolean updateCustomer(int inId, String title, String time,String date, String notification){
+    public boolean updateEvent(int inId, String title, String time,String date, String notification){
         ContentValues values = new ContentValues();
         int success = -1;
         values.put(DBhelper.COLUMN_TITLE, title);
@@ -89,7 +89,7 @@ public class DB_data_source {
 
 
     //delete
-    public boolean deleteCustomer(int inId) {
+    public boolean deleteEvent(int inId) {
         int success = -1;
         success = m_database.delete(
                 DBhelper.TABLE_EVENTS,

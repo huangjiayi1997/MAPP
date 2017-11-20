@@ -39,11 +39,17 @@ public class MainActivity extends AppCompatActivity {
             int id = selectedEventToUpdate.getID();
             String title = selectedEventToUpdate.getTitle();
             String date = selectedEventToUpdate.getDate();
+            String time=selectedEventToUpdate.getTime();
+            String notification=selectedEventToUpdate.getNotification();
+
             Intent intent = new Intent(MainActivity.this, UpdateEvent.class);
 
             intent.putExtra("ID", Integer.toString(id));
             intent.putExtra("Title", title);
             intent.putExtra("Date", date);
+            intent.putExtra("Time",time);
+            intent.putExtra("Notification",notification);
+
 
             startActivityForResult(intent,5);
         }
@@ -62,7 +68,7 @@ public class MainActivity extends AppCompatActivity {
         switch (view.getId()) {
             case R.id.AddEventButton:
                 Intent i = new Intent(MainActivity.this,AddEvent.class);
-                startActivityForResult(i,4);
+                startActivityForResult(i,4);//request code allow you to identify from which intent you came back
                 break;//allow refresh
         }
     }
@@ -125,6 +131,7 @@ protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         loadEvents();//Update the recylcerview to reflect the changes
         m_EventArrayAdapter.notifyDataSetChanged();
     }
+
     if ((requestCode == 5)&&(resultCode == Activity.RESULT_CANCELED)) {
         Log.v("MainActivity","You visited the Edit screen and clicked Home");
         Toast.makeText(getBaseContext(), "You visited the Edit screen and clicked Home or Back", Toast.LENGTH_SHORT).show();
