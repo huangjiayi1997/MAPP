@@ -3,7 +3,9 @@ package com.example.asus.assignment;
  * Created by Ah Tan on 1/11/17.
  */
 
+import android.content.Intent;
 import android.support.v7.widget.RecyclerView;
+import android.util.EventLog;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -29,7 +31,13 @@ public class EventArrayAdapter extends RecyclerView.Adapter<EventArrayAdapter.Vi
         this.mListener = listener;
     }
 
-
+    //for delete
+    private void removeItem(int position) {
+        //notify item removed by position
+        EventArrayList.remove(position);
+        notifyItemRemoved(position);
+        //notifyItemRangeChanged(position, EventArrayList.size());
+    }
 
     // get the size of the list
     @Override
@@ -46,6 +54,9 @@ public class EventArrayAdapter extends RecyclerView.Adapter<EventArrayAdapter.Vi
         return myViewHolder;
     }
 
+
+
+
     // load data in each row element
     @Override
     public void onBindViewHolder(final ViewHolder holder, final int listPosition) {
@@ -60,10 +71,16 @@ public class EventArrayAdapter extends RecyclerView.Adapter<EventArrayAdapter.Vi
         textView_time.setText(EventArrayList.get(listPosition).getTime());
         textView_date.setText(EventArrayList.get(listPosition).getDate());
         textView_notification.setText(EventArrayList.get(listPosition).getNotification());
+
+
+
+
+
     }
 
     // Static inner class to initialize the views of rows
-    static class ViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
+    // i removed static infront of class viewholder
+     class ViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
         public TextView textView_title;
         public TextView textView_time;
         public TextView textView_date;
@@ -98,6 +115,7 @@ public class EventArrayAdapter extends RecyclerView.Adapter<EventArrayAdapter.Vi
 
 
         }
+
         @Override
         public void onClick(View view) {
             int id= view.getId();
@@ -106,9 +124,9 @@ public class EventArrayAdapter extends RecyclerView.Adapter<EventArrayAdapter.Vi
             Log.d("onclick000000", "onClick " + getLayoutPosition() + " " + textView_title.getText());
             mListener.onClick(view, getAdapterPosition());
             break;
-                case R.id.Button_Delete:
-                    Log.d("delete operation","insert code below");
-
+            case R.id.Button_Delete:
+                Log.d("delete operation","insert code below");
+                removeItem(getAdapterPosition());
                     break;
             }
 

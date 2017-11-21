@@ -30,6 +30,7 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
+
         // Initializing list view with the custom adapter
         m_EventArrayList = new ArrayList<AppEvent>();
         RecyclerViewClickListener listener = new RecyclerViewClickListener() {
@@ -106,7 +107,7 @@ public class MainActivity extends AppCompatActivity {
         return true;
     }
 
-    
+
     protected void loadEvents() {
         //TextView textViewResults = findViewById(R.id.ViewEvent);//this line causes the result to display in line without formatting
 
