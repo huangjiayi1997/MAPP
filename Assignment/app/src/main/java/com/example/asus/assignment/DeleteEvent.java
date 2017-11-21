@@ -2,6 +2,8 @@ package com.example.asus.assignment;
 
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
+import android.util.DisplayMetrics;
+import android.util.Log;
 import android.view.View;
 import android.widget.Toast;
 
@@ -10,18 +12,34 @@ import android.widget.Toast;
  */
 
 public class DeleteEvent extends AppCompatActivity {
-    private int id;
+    private int id,position;
+    public static EventArrayAdapter m_EventArrayAdapter;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.event_list_item);
 
+        setContentView(R.layout.delete_pop_up);
+        DisplayMetrics dm=new DisplayMetrics();
+        getWindowManager().getDefaultDisplay().getMetrics(dm);
+        int width=dm.widthPixels;
+        int height=dm.heightPixels;
+
+        getWindow().setLayout((int)(width*.7),(int)(height*.5));
         String tempId =  getIntent().getStringExtra("ID");
+        String temppos =  getIntent().getStringExtra("position");
+
+        //problem: tempid cannot be retrieve, its null.(resolved)
+        position=Integer.parseInt(temppos);
         id= Integer.parseInt(tempId);
 
-        findViewById(R.id.Button_Delete).setOnClickListener(new View.OnClickListener() {
+        Log.d("Delete Event","ID"+id);
+
+
+        findViewById(R.id.Button_Delete_pop_up).setOnClickListener(new View.OnClickListener() {
             @Override
+
             public void onClick(View v) {
 
                 //new db obj
@@ -35,8 +53,8 @@ public class DeleteEvent extends AppCompatActivity {
                 Toast.makeText(v.getContext(), "Event deleted", Toast.LENGTH_SHORT).show();
                 db.close();
                 finish();
-
-
+                Log.d("Button_delete","error C"+position);
+                //m_EventArrayAdapter.removeItem(position);
 
             }});}
     }

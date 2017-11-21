@@ -31,13 +31,7 @@ public class EventArrayAdapter extends RecyclerView.Adapter<EventArrayAdapter.Vi
         this.mListener = listener;
     }
 
-    //for delete
-    private void removeItem(int position) {
-        //notify item removed by position
-        EventArrayList.remove(position);
-        notifyItemRemoved(position);
-        //notifyItemRangeChanged(position, EventArrayList.size());
-    }
+
 
     // get the size of the list
     @Override
@@ -45,6 +39,16 @@ public class EventArrayAdapter extends RecyclerView.Adapter<EventArrayAdapter.Vi
         return EventArrayList == null ? 0 : EventArrayList.size();
     }
 
+    //for delete
+    public void removeItem(int position) {
+        //notify item removed by position
+       // Log.d("delete operation","insert code below4");
+        EventArrayList.remove(position);
+        notifyItemRemoved(position);
+        Log.d("tracker","tracker8");
+        notifyItemRangeChanged(position, EventArrayList.size());
+        Log.d("tracker","tracker9");
+    }
 
     // specify the row layout file and click for each row
     @Override
@@ -52,6 +56,7 @@ public class EventArrayAdapter extends RecyclerView.Adapter<EventArrayAdapter.Vi
         View view = LayoutInflater.from(parent.getContext()).inflate(listItemLayout, parent, false);
         ViewHolder myViewHolder = new ViewHolder(view,this.mListener);
         return myViewHolder;
+
     }
 
 
@@ -71,7 +76,7 @@ public class EventArrayAdapter extends RecyclerView.Adapter<EventArrayAdapter.Vi
         textView_time.setText(EventArrayList.get(listPosition).getTime());
         textView_date.setText(EventArrayList.get(listPosition).getDate());
         textView_notification.setText(EventArrayList.get(listPosition).getNotification());
-
+        Log.d("tracker","tracker10");
 
 
 
@@ -80,7 +85,7 @@ public class EventArrayAdapter extends RecyclerView.Adapter<EventArrayAdapter.Vi
 
     // Static inner class to initialize the views of rows
     // i removed static infront of class viewholder
-     class ViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
+    class ViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
         public TextView textView_title;
         public TextView textView_time;
         public TextView textView_date;
@@ -125,7 +130,8 @@ public class EventArrayAdapter extends RecyclerView.Adapter<EventArrayAdapter.Vi
             mListener.onClick(view, getAdapterPosition());
             break;
             case R.id.Button_Delete:
-                Log.d("delete operation","insert code below");
+                Log.d("onclick000001", "onClick " + getLayoutPosition() + " " + textView_title.getText());
+                mListener.onClick(view, getAdapterPosition());
                 removeItem(getAdapterPosition());
                     break;
             }

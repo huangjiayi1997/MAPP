@@ -30,6 +30,7 @@
                 />
         </activity>
         <activity android:name=".DeleteEvent"
+            android:theme="@style/AppTheme.PopupTheme"
         android:parentActivityName=".MainActivity">
         <meta-data android:name="android.support.PARENT_ACTIVITY"
             android:value=".MainActivity"

@@ -25,6 +25,7 @@ public class MainActivity extends AppCompatActivity {
     public static ArrayList<AppEvent> m_EventArrayList;
     RecyclerView m_recyclerView;
     public static EventArrayAdapter m_EventArrayAdapter;
+   // private int deleteid;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -39,6 +40,11 @@ public class MainActivity extends AppCompatActivity {
             Toast.makeText(view.getContext(), "You have selected position " + position, Toast.LENGTH_SHORT).show();
             AppEvent selectedEventToUpdate = m_EventArrayList.get(position);
             int id = selectedEventToUpdate.getID();
+
+            int viewid=view.getId();
+            switch(viewid){
+                case R.id.Button_Edit:
+                    Log.d("Button_edit","error A");
             String title = selectedEventToUpdate.getTitle();
             String date = selectedEventToUpdate.getDate();
             String time=selectedEventToUpdate.getTime();
@@ -54,6 +60,15 @@ public class MainActivity extends AppCompatActivity {
 
 
             startActivityForResult(intent,5);
+            break;
+                case R.id.Button_Delete:
+
+                    deleteActivity(view,id);
+
+                    Log.d("Button_delete","error A");
+
+            break;
+            }
         }
         };
         m_EventArrayAdapter = new EventArrayAdapter(R.layout.event_list_item, m_EventArrayList,listener);
@@ -63,6 +78,15 @@ public class MainActivity extends AppCompatActivity {
         m_recyclerView.setAdapter(m_EventArrayAdapter);
 
         loadEvents();
+    }
+
+    //delete record from db
+    public void deleteActivity(View view,int id){
+        DB_data_source db = new DB_data_source (view.getContext());
+        db.open();
+        db.deleteEvent(id);//change this to event
+        Toast.makeText(view.getContext(), "Event deleted", Toast.LENGTH_SHORT).show();
+        db.close();
     }
 
 //refresh recyclerview to add in data
@@ -75,31 +99,20 @@ public class MainActivity extends AppCompatActivity {
         }
     }
 
-
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
-       // Log.d("event error","0");
-        //Reference: http://www.vogella.com/tutorials/AndroidActionBar/article.html
         MenuInflater inflater = getMenuInflater();
-       // Log.d("event error","9");
         inflater.inflate(R.menu.about_menu, menu);
-        //Log.d("event error","8");
         return true;
-    }//all executed
+    }
 
     @Override
-    //use this to do hamburger
-    public boolean onOptionsItemSelected(MenuItem item) {
-        Log.d("event error","7");
-        switch (item.getItemId()) {
 
-            // action with ID action_goto_add_customer was selected
+    public boolean onOptionsItemSelected(MenuItem item) {
+        switch (item.getItemId()) {
             case R.id.About_app:
-                Log.d("event error","5");
                 Intent i = new Intent(MainActivity.this,AboutEvent.class);
-                Log.d("event error","b");
                 startActivity(i);
-                Log.d("event error","a");
                 break;
             default:
                 break;
@@ -109,29 +122,17 @@ public class MainActivity extends AppCompatActivity {
 
 
     protected void loadEvents() {
-        //TextView textViewResults = findViewById(R.id.ViewEvent);//this line causes the result to display in line without formatting
 
-        //textViewResults.setText("");
-        //DB_data_source database = new DB_data_source(this);
-        //database.open();
-        //Cursor cursor = database.selectAllEvents();
-        //cursor.moveToFirst();
-        //changed to:
         AppEvent event;
-        //Note: the m_customerArrayList is declared as class member variable
-        //Clear the m_customerArrayList first before openning the database
+
         m_EventArrayList.clear();
         DB_data_source database = new DB_data_source(this);
         database.open();
-        //The following command will retrieve all data from the database
+
         Cursor cursor = database.selectAllEvents();
-        //The following block of code is frequently used by developers to
-        //(1)loop through one record at a time and (2)quickily display in a TextView
-        //to have some assurance that the database has the records.
-        //I obtained these code from
-        //https://stackoverflow.com/questions/10723770/whats-the-best-way-to-iterate-an-android-cursor
+
         cursor.moveToFirst();
-        Log.d("Operation error","0");
+       // Log.d("Operation error","0");
         while (!cursor.isAfterLast()) {
             String Title = cursor.getString(cursor.getColumnIndex("TITLE"));
             String Date = cursor.getString(cursor.getColumnIndex("DATE"));
@@ -139,33 +140,27 @@ public class MainActivity extends AppCompatActivity {
             String Notification = cursor.getString(cursor.getColumnIndex("NOTIFICATION"));
             int id = cursor.getInt(cursor.getColumnIndex("ID"));
             Log.d("Operation error","1");
-
-            //change this:
-            //textViewResults.append(id + " - " + Title + " - " + Date + " - " + Time +" - " +Notification + "\n");
-            //cursor.moveToNext();
-
-            //change to:
             event=new AppEvent(id,Title,Date,Time,Notification);
-            Log.d("Operation error","2");
+           // Log.d("Operation error","2");
             m_EventArrayList.add(event);
-            Log.d("Operation error","3");
+           // Log.d("Operation error","3");
             cursor.moveToNext();
             Log.d("Operation error","4");
 
         }
         database.close();
+        Log.d("tracker","tracker2");
     }
 
 @Override
 protected void onActivityResult(int requestCode, int resultCode, Intent data) {
     super.onActivityResult(requestCode, resultCode, data);
-    //I was not sure whether this onActivityResult will execute.
-    //Therefore, I used Log.d to check.
     Log.v("MainActivity","Request code" + requestCode);
     if (requestCode == 4) {
         Log.v("MainActivity","Executed onActivityResult 4");
         loadEvents();//Update the recylcerview to reflect the changes
         m_EventArrayAdapter.notifyDataSetChanged();
+        Log.d("tracker","tracker3");
     }
 
     if ((requestCode == 5)&&(resultCode == Activity.RESULT_CANCELED)) {
@@ -173,5 +168,6 @@ protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         Toast.makeText(getBaseContext(), "You visited the Edit screen and clicked Home or Back", Toast.LENGTH_SHORT).show();
         loadEvents();//Update the recylcerview to reflect the changes
         m_EventArrayAdapter.notifyDataSetChanged();
+        Log.d("tracker","tracker4");
     }
 }}
