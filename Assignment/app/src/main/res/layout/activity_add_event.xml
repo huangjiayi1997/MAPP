@@ -5,22 +5,12 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:scrollbars="vertical"
+    android:background="#e0eafc"
     tools:context="com.example.asus.assignment.AddEvent">
     <LinearLayout
         android:layout_width="match_parent"
         android:orientation="vertical"
         android:layout_height="fill_parent">
-
-
-        <EditText
-            android:id="@+id/NewTime"
-            android:layout_width="155dp"
-            android:layout_height="44dp"
-            android:ems="10"
-            android:hint="0000HOURS"
-            android:inputType="time"
-            tools:layout_editor_absoluteX="108dp"
-            tools:layout_editor_absoluteY="164dp" />
 
         <EditText
             android:id="@+id/NewTitle"
@@ -32,6 +22,17 @@
             android:textSize="20sp"
             tools:layout_editor_absoluteX="48dp"
             tools:layout_editor_absoluteY="30dp" />
+        <EditText
+            android:id="@+id/NewTime"
+            android:layout_width="155dp"
+            android:layout_height="44dp"
+            android:ems="10"
+            android:hint="0000HOURS"
+            android:inputType="time"
+            tools:layout_editor_absoluteX="108dp"
+            tools:layout_editor_absoluteY="164dp" />
+
+
 
         <EditText
             android:id="@+id/NewDate"
@@ -44,29 +45,26 @@
             tools:layout_editor_absoluteY="99dp" />
 
         <EditText
-            android:id="@+id/NewColour"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:ems="10"
-            android:inputType="textPersonName"
-            android:text="ColourTag :"
-            android:textAppearance="@style/TextAppearance.AppCompat.Small"
-            tools:layout_editor_absoluteX="48dp"
-            tools:layout_editor_absoluteY="232dp" />
-
-        <CheckBox
+            android:id="@+id/NewDescription"
+            android:layout_width="349dp"
+            android:layout_height="92dp"
+            android:hint="Description"
+            tools:layout_editor_absoluteX="145dp"
+            tools:layout_editor_absoluteY="346dp" />
+        <!--<CheckBox
             android:id="@+id/NotificationBoolean"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Notification"
             tools:layout_editor_absoluteX="145dp"
-            tools:layout_editor_absoluteY="346dp" />
+            tools:layout_editor_absoluteY="346dp" />-->
 
         <Button
             android:id="@+id/EnableShare"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="SHARE"
+            android:layout_gravity="center"
             tools:layout_editor_absoluteX="148dp"
             tools:layout_editor_absoluteY="391dp" />
 
@@ -74,6 +72,7 @@
             android:id="@+id/AddEventButton"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_gravity="center"
             android:text="ADD"
             tools:layout_editor_absoluteX="148dp"
             tools:layout_editor_absoluteY="446dp" />

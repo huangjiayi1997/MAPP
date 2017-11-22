@@ -8,6 +8,7 @@ import android.os.Bundle;
 import android.support.v7.widget.DefaultItemAnimator;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.util.EventLogTags;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.Menu;
@@ -48,7 +49,7 @@ public class MainActivity extends AppCompatActivity {
             String title = selectedEventToUpdate.getTitle();
             String date = selectedEventToUpdate.getDate();
             String time=selectedEventToUpdate.getTime();
-            String notification=selectedEventToUpdate.getNotification();
+            String description=selectedEventToUpdate.getDescription();
 
             Intent intent = new Intent(MainActivity.this, UpdateEvent.class);
 
@@ -56,7 +57,8 @@ public class MainActivity extends AppCompatActivity {
             intent.putExtra("Title", title);
             intent.putExtra("Date", date);
             intent.putExtra("Time",time);
-            intent.putExtra("Notification",notification);
+            intent.putExtra("Description", description);
+            //intent.putExtra("Notification",notification);
 
 
             startActivityForResult(intent,5);
@@ -137,10 +139,10 @@ public class MainActivity extends AppCompatActivity {
             String Title = cursor.getString(cursor.getColumnIndex("TITLE"));
             String Date = cursor.getString(cursor.getColumnIndex("DATE"));
             String Time = cursor.getString(cursor.getColumnIndex("TIME"));
-            String Notification = cursor.getString(cursor.getColumnIndex("NOTIFICATION"));
+            String Description = cursor.getString(cursor.getColumnIndex("DESCRIPTION"));
             int id = cursor.getInt(cursor.getColumnIndex("ID"));
             Log.d("Operation error","1");
-            event=new AppEvent(id,Title,Date,Time,Notification);
+            event=new AppEvent(id,Title,Date,Time,Description);
            // Log.d("Operation error","2");
             m_EventArrayList.add(event);
            // Log.d("Operation error","3");

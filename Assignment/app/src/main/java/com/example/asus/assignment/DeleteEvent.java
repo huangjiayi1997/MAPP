@@ -28,10 +28,10 @@ public class DeleteEvent extends AppCompatActivity {
 
         getWindow().setLayout((int)(width*.7),(int)(height*.5));
         String tempId =  getIntent().getStringExtra("ID");
-        String temppos =  getIntent().getStringExtra("position");
+        String tempPos =  getIntent().getStringExtra("position");
 
         //problem: tempid cannot be retrieve, its null.(resolved)
-        position=Integer.parseInt(temppos);
+        position=Integer.parseInt(tempPos);
         id= Integer.parseInt(tempId);
 
         Log.d("Delete Event","ID"+id);

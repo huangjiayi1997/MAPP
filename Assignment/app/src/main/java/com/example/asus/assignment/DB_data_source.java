@@ -41,7 +41,8 @@ public class DB_data_source {
             values.put(DBhelper.COLUMN_TITLE, AppEvent.getTitle());
             values.put(DBhelper.COLUMN_DATE, AppEvent.getDate());
             values.put(DBhelper.COLUMN_TIME, AppEvent.getTime());
-            values.put(DBhelper.COLUMN_NOTIFICATION, AppEvent.getNotification());
+            values.put(DBhelper.COLUMN_DESCRIPTION, AppEvent.getDescription());
+           // values.put(DBhelper.COLUMN_NOTIFICATION, AppEvent.getNotification());
 
             m_database.insert(DBhelper.TABLE_EVENTS, null, values);
 
@@ -64,13 +65,14 @@ public class DB_data_source {
     }
 
   //update
-    public boolean updateEvent(int inId, String title, String time,String date, String notification){
+    public boolean updateEvent(int inId, String title, String time,String date, String description){
         ContentValues values = new ContentValues();
         int success = -1;
         values.put(DBhelper.COLUMN_TITLE, title);
         values.put(DBhelper.COLUMN_TIME,time);
         values.put(DBhelper.COLUMN_DATE,date);
-        values.put(DBhelper.COLUMN_NOTIFICATION,notification);
+        values.put(DBhelper.COLUMN_DESCRIPTION,description);
+     //   values.put(DBhelper.COLUMN_NOTIFICATION,notification);
         success =  m_database.update(
                 DBhelper.TABLE_EVENTS,
                 values,

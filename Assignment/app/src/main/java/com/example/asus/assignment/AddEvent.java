@@ -16,7 +16,7 @@ import android.widget.Toast;
 
 public class AddEvent extends AppCompatActivity {
     //private Button AddButton;
-    private EditText NewDate, NewTime, NewTitle;
+    private EditText NewDate, NewTime, NewTitle, NewDescription;
     private CheckBox NewNotification;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -36,12 +36,14 @@ public class AddEvent extends AppCompatActivity {
                 NewDate = (EditText) findViewById(R.id.NewDate);
                 String EventDate = NewDate.getText().toString();
 
-                NewNotification = (CheckBox) findViewById(R.id.NotificationBoolean);
-                String EventNotification = NewNotification.getText().toString();
+                NewDescription = (EditText) findViewById(R.id.NewDescription);
+                String EventDescription = NewDescription.getText().toString();
+                /*NewNotification = (CheckBox) findViewById(R.id.NotificationBoolean);
+                String EventNotification = NewNotification.getText().toString();*/
 
 
                 DB_data_source db = new DB_data_source (v.getContext());
-                AppEvent newEvent = new AppEvent(0,EventTitle,EventDate,EventTime,EventNotification);
+                AppEvent newEvent = new AppEvent(0,EventTitle,EventDate,EventTime,EventDescription);
 
                 //open db
                 db.open();

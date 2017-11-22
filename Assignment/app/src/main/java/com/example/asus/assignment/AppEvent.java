@@ -9,14 +9,16 @@ public class AppEvent {
     private String Title;
     private String Date;
     private String Time;
+    private String Description;
     private String Notification;
 
-    public AppEvent(int inID, String inTitle, String inDate, String inTime, String inNotification) {
+    public AppEvent(int inID, String inTitle, String inDate, String inTime, String inDescription) {
         this.ID = inID;
         this.Title = inTitle;
         this.Date = inDate;
         this.Time = inTime;
-        this.Notification = inNotification;
+        this.Description = inDescription;
+       // this.Notification = inNotification;
     }
     public int getID() {
         return ID;
@@ -49,4 +51,10 @@ public class AppEvent {
         this.Notification = inNotification;
     }
 
+    public String getDescription() {
+        return Description;
+    }
+    public void setDescription(String inDescription) {
+        this.Description = inDescription;
+    }
 }
