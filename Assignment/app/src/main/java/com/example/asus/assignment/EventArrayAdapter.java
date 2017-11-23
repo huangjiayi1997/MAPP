@@ -13,6 +13,8 @@ import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.TextView;
 
+import org.w3c.dom.Text;
+
 import java.util.ArrayList;
 
 
@@ -70,12 +72,12 @@ public class EventArrayAdapter extends RecyclerView.Adapter<EventArrayAdapter.Vi
         TextView textView_title = holder.textView_title;
         TextView textView_time = holder.textView_time;
         TextView textView_date = holder.textView_date;
-        TextView textView_notification = holder.textView_notification;
+        TextView textView_description = holder.textView_description;
 
         textView_title.setText(EventArrayList.get(listPosition).getTitle());
         textView_time.setText(EventArrayList.get(listPosition).getTime());
         textView_date.setText(EventArrayList.get(listPosition).getDate());
-        textView_notification.setText(EventArrayList.get(listPosition).getNotification());
+        textView_description.setText(EventArrayList.get(listPosition).getDescription());
         Log.d("tracker","tracker10");
 
 
@@ -89,7 +91,8 @@ public class EventArrayAdapter extends RecyclerView.Adapter<EventArrayAdapter.Vi
         public TextView textView_title;
         public TextView textView_time;
         public TextView textView_date;
-        public TextView textView_notification;
+        public TextView textView_description;
+        //public TextView textView_notification;
         public Button button_edit;
         public Button button_delete;
 
@@ -107,7 +110,8 @@ public class EventArrayAdapter extends RecyclerView.Adapter<EventArrayAdapter.Vi
             textView_title = (TextView) itemView.findViewById(R.id.TextView_title);
             textView_time = (TextView) itemView.findViewById(R.id.TextView_time);
             textView_date=(TextView)itemView.findViewById(R.id.TextView_date);
-            textView_notification=(TextView)itemView.findViewById(R.id.TextView_Notification);
+           // textView_notification=(TextView)itemView.findViewById(R.id.TextView_Notification);
+            textView_description=(TextView)itemView.findViewById(R.id.TextView_description);
 
             //for edit in list
             button_edit = (Button) itemView.findViewById(R.id.Button_Edit);

@@ -11,6 +11,7 @@ public class AppEvent {
     private String Time;
     private String Description;
     private String Notification;
+    //you need to create a new db when you change the column, the description thing not thereeeee,check your codeeeeee i thnk its when u call from the db idk got tons of dependencies
 
     public AppEvent(int inID, String inTitle, String inDate, String inTime, String inDescription) {
         this.ID = inID;

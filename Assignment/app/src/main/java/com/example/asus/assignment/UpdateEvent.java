@@ -11,8 +11,8 @@ import android.widget.Toast;
 
 public class UpdateEvent extends AppCompatActivity {
     private int id;
-    private String Notification,Title,Date,Time;
-    private EditText editTextTitle,editTextDate,editTextTime,editTextNotification;
+    private String /*Notification*/Description,Title,Date,Time;
+    private EditText editTextTitle,editTextDate,editTextTime,editTextDescription;/*editTextNotification;*/
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -24,8 +24,9 @@ public class UpdateEvent extends AppCompatActivity {
 
         Title = getIntent().getStringExtra("Title");
         Date = getIntent().getStringExtra("Date");
-        Notification=getIntent().getStringExtra("Notification");
+        //Notification=getIntent().getStringExtra("Notification");
         Time=getIntent().getStringExtra("Time");
+        Description=getIntent().getStringExtra("Description");//NEED TO FIND THIS NAME  WAOIT
 
 
         //After collecting the data, the data is used to display inside
@@ -49,10 +50,12 @@ public class UpdateEvent extends AppCompatActivity {
 
 
         //for notification
-        editTextNotification=(EditText)findViewById((R.id.EditText_notification));
-        editTextNotification.setText(Notification);
+/*        editTextNotification=(EditText)findViewById((R.id.EditText_notification));
+        editTextNotification.setText(Notification);*/
 
-
+        //for description
+        editTextDescription=(EditText) findViewById(R.id.EditText_description); // whr the findview get this attribute like which file xml which yay
+        editTextDescription.setText(Description);
         findViewById(R.id.Button_Save).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -60,14 +63,14 @@ public class UpdateEvent extends AppCompatActivity {
                 String EventTitle = editTextTitle.getText().toString();
                 String EventDate = editTextDate.getText().toString();
                 String EventTime = editTextTime.getText().toString();
-                String EventNotification= editTextNotification.getText().toString();
+                String EventDescription= editTextDescription.getText().toString();
 
         //updating db
         DB_data_source db = new DB_data_source (v.getContext());
 
         //open db
                 db.open();
-                db.updateEvent(id, EventTitle,EventTime,EventDate, EventNotification);
+                db.updateEvent(id, EventTitle,EventTime,EventDate, EventDescription);
                 Toast.makeText(v.getContext(), "Event Updated", Toast.LENGTH_SHORT).show();
                 db.close();
                 finish();

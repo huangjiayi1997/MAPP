@@ -51,6 +51,8 @@ public class MainActivity extends AppCompatActivity {
             String time=selectedEventToUpdate.getTime();
             String description=selectedEventToUpdate.getDescription();
 
+            //add here OH WAIT
+
             Intent intent = new Intent(MainActivity.this, UpdateEvent.class);
 
             intent.putExtra("ID", Integer.toString(id));
