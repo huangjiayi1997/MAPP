@@ -18,23 +18,21 @@ import java.io.OutputStream;
  */
 
 public class DBhelper extends SQLiteOpenHelper {
-    //declaration of database variables
     public static final String TABLE_EVENTS ="EVENTS";
     public static final String COLUMN_ID = "ID";
     public static final String COLUMN_TITLE = "TITLE";
     public static final String COLUMN_DATE = "DATE";
     public static final String COLUMN_TIME = "TIME";
     public static final String COLUMN_DESCRIPTION = "DESCRIPTION";
-    public static final String COLUMN_NOTIFICATION = "NOTIFICATION";//this is original column?? ya thats just a variable tho dont think it matters
+ //   public static final String COLUMN_NOTIFICATION = "NOTIFICATION";
 
 
     private static final String DB_NAME = "database2.db";
     private static final int DB_VER = 1;
-    //notification is omitted because we are not using it yet U KNOW HOW CHECK THE STATEMENT or is it need to reinitialize the db
+    //notification is omitted because we are not using it yet
     private static final String DB_CREATE = "CREATE TABLE "+ TABLE_EVENTS+ " (" + COLUMN_ID + " INTEGER PRIMARY KEY AUTOINCREMENT" + ", " + COLUMN_TITLE + " TEXT " + ", " + COLUMN_DATE + " TEXT,"+ COLUMN_TIME + " TEXT " + ", "+ COLUMN_DESCRIPTION + " TEXT) " ;
 
 
-    //cannot run on my whats the error cant even build wat3fkkkfkfkfkkfkfk
     public DBhelper(Context context){
         super(context, DB_NAME, null, DB_VER);
 

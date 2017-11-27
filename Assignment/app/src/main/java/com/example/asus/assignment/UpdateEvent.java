@@ -30,7 +30,6 @@ public class UpdateEvent extends AppCompatActivity {
 
 
         //After collecting the data, the data is used to display inside
-        //the correct controls
 
         //for title
         editTextTitle= (EditText)findViewById(R.id.EditText_title);
@@ -77,9 +76,6 @@ public class UpdateEvent extends AppCompatActivity {
 
             };});}
 
-    //-------Need these code (onBackPressed, onOptionsItemSelected) to handle user action when
-    // they click the back arrow icon in action bar
-    //                 and the mobile phone's default back button .
     @Override
     public void onBackPressed() {
         Intent data = new Intent();
@@ -100,5 +96,5 @@ public class UpdateEvent extends AppCompatActivity {
         }
         return true;
     }
-    //----------------------------------------------------------------------------------------------------
+
 }

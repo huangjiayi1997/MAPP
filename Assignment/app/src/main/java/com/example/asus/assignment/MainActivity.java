@@ -51,8 +51,6 @@ public class MainActivity extends AppCompatActivity {
             String time=selectedEventToUpdate.getTime();
             String description=selectedEventToUpdate.getDescription();
 
-            //add here OH WAIT
-
             Intent intent = new Intent(MainActivity.this, UpdateEvent.class);
 
             intent.putExtra("ID", Integer.toString(id));
@@ -98,8 +96,8 @@ public class MainActivity extends AppCompatActivity {
         switch (view.getId()) {
             case R.id.AddEventButton:
                 Intent i = new Intent(MainActivity.this,AddEvent.class);
-                startActivityForResult(i,4);//request code allow you to identify from which intent you came back
-                break;//allow refresh
+                startActivityForResult(i,4);
+                break;
         }
     }
 

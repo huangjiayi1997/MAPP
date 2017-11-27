@@ -23,10 +23,8 @@ public class EventArrayAdapter extends RecyclerView.Adapter<EventArrayAdapter.Vi
 
     private RecyclerViewClickListener mListener;
 
-    //All methods in this adapter are required for a bare minimum recyclerview adapter
     private int listItemLayout;
     private ArrayList <AppEvent> EventArrayList;
-    // Constructor of the class
     public EventArrayAdapter(int layoutId, ArrayList<AppEvent> itemList, RecyclerViewClickListener listener) {
         listItemLayout = layoutId;
         this.EventArrayList = itemList;
@@ -86,7 +84,6 @@ public class EventArrayAdapter extends RecyclerView.Adapter<EventArrayAdapter.Vi
     }
 
     // Static inner class to initialize the views of rows
-    // i removed static infront of class viewholder
     class ViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
         public TextView textView_title;
         public TextView textView_time;
@@ -104,9 +101,7 @@ public class EventArrayAdapter extends RecyclerView.Adapter<EventArrayAdapter.Vi
             super(itemView);
             mListener = listener;
 
-            //Get the three variables, textView_name, textView_mobileContact and
-            //button_edit to reference the elements which are defined the the XML in
-            //the customer_liest_item.xml.
+
             textView_title = (TextView) itemView.findViewById(R.id.TextView_title);
             textView_time = (TextView) itemView.findViewById(R.id.TextView_time);
             textView_date=(TextView)itemView.findViewById(R.id.TextView_date);
@@ -117,8 +112,6 @@ public class EventArrayAdapter extends RecyclerView.Adapter<EventArrayAdapter.Vi
             button_edit = (Button) itemView.findViewById(R.id.Button_Edit);
             button_delete=(Button) itemView.findViewById(R.id.Button_Delete);
 
-
-            //Defined a click listener only for the button which has the edit icon
             button_edit.setOnClickListener(this);
             button_delete.setOnClickListener(this);
 

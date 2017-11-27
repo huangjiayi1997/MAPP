@@ -11,11 +11,8 @@ import android.database.sqlite.SQLiteDatabase;
  */
 
 public class DB_data_source {
-    //Create a variable, m_database capable of referencing the SQLiteDatabase
     private SQLiteDatabase m_database;
-    //Create a variable, m_dbHelper capable of helping us make the code more readable
     private DBhelper m_dbHelper;
-    //Create a variable which capable of describing the running app environment
     private Context m_context;
 
     public DB_data_source(Context context){
@@ -52,7 +49,6 @@ public class DB_data_source {
         }
     }
 
-    //select
     public Cursor selectAllEvents(){
         Cursor cursor = m_database.rawQuery("Select * from " + DBhelper.TABLE_EVENTS, null);
         return cursor;
@@ -64,7 +60,7 @@ public class DB_data_source {
         return cursor;
     }
 
-  //update
+
     public boolean updateEvent(int inId, String title, String time,String date, String description){
         ContentValues values = new ContentValues();
         int success = -1;
@@ -90,7 +86,7 @@ public class DB_data_source {
 
 
 
-    //delete
+
     public boolean deleteEvent(int inId) {
         int success = -1;
         success = m_database.delete(
