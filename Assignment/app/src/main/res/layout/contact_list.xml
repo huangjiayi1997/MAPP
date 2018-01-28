@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:layout_height="90dp"
+    android:background="#e0eafc"
+    >
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="horizontal"
+        android:id="@+id/linearlayout2">
+
+        <TextView
+
+            android:id="@+id/Contact_Name"
+            android:layout_width="300dp"
+            android:layout_height="wrap_content"
+            android:layout_alignBaseline="@+id/Contact_selection"
+            android:layout_alignBottom="@+id/Contact_selection"
+            android:layout_marginEnd="11dp"
+            android:layout_marginRight="11dp"
+            android:layout_toLeftOf="@+id/Contact_selection"
+            android:layout_toStartOf="@+id/Contact_selection"
+            android:textSize="24sp" />
+
+        <TextView
+
+            android:id="@+id/Contact_contact"
+            android:layout_width="300dp"
+            android:layout_height="wrap_content"
+            android:layout_alignLeft="@+id/Contact_Name"
+            android:layout_alignStart="@+id/Contact_Name"
+            android:layout_below="@+id/Contact_Name"
+            android:textSize="15sp" />
+
+        <CheckBox
+            android:id="@+id/Contact_selection"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:layout_alignParentEnd="true"
+            android:layout_alignParentRight="true"
+            android:layout_centerVertical="true" />
+
+
+
+
+
+    </RelativeLayout>
+
+</LinearLayout>

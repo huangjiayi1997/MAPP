@@ -13,55 +13,25 @@
 
 
         <EditText
-            android:id="@+id/NewTime"
+            android:id="@+id/NewName"
             android:layout_width="155dp"
             android:layout_height="44dp"
             android:ems="10"
-            android:hint="0000HOURS"
-            android:inputType="time"
             tools:layout_editor_absoluteX="108dp"
             tools:layout_editor_absoluteY="164dp" />
 
         <EditText
-            android:id="@+id/NewTitle"
+            android:id="@+id/NewEmail"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:ems="10"
-            android:hint="Title"
             android:inputType="textPersonName"
             android:textSize="20sp"
             tools:layout_editor_absoluteX="48dp"
             tools:layout_editor_absoluteY="30dp" />
 
-        <EditText
-            android:id="@+id/NewColour"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:ems="10"
-            android:inputType="textPersonName"
-            android:text="ColourTag :"
-            android:textAppearance="@style/TextAppearance.AppCompat.Small"
-            tools:layout_editor_absoluteX="48dp"
-            tools:layout_editor_absoluteY="232dp" />
-
-        <CheckBox
-            android:id="@+id/NotificationBoolean"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Notification"
-            tools:layout_editor_absoluteX="145dp"
-            tools:layout_editor_absoluteY="346dp" />
-
         <Button
-            android:id="@+id/EnableShare"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="SHARE"
-            tools:layout_editor_absoluteX="148dp"
-            tools:layout_editor_absoluteY="391dp" />
-
-        <Button
-            android:id="@+id/AddEventButton"
+            android:id="@+id/Add_Contact_Button"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="ADD"

@@ -92,6 +92,7 @@ public class EventArrayAdapter extends RecyclerView.Adapter<EventArrayAdapter.Vi
         public TextView textView_notification;
         public Button button_edit;
         public Button button_delete;
+        public Button button_share;
 
 
 
@@ -112,11 +113,13 @@ public class EventArrayAdapter extends RecyclerView.Adapter<EventArrayAdapter.Vi
             //for edit in list
             button_edit = (Button) itemView.findViewById(R.id.Button_Edit);
             button_delete=(Button) itemView.findViewById(R.id.Button_Delete);
+            button_share=(Button) itemView.findViewById(R.id.EnableShare2);
 
 
             //Defined a click listener only for the button which has the edit icon
             button_edit.setOnClickListener(this);
             button_delete.setOnClickListener(this);
+            button_share.setOnClickListener(this);
 
 
         }
@@ -134,6 +137,10 @@ public class EventArrayAdapter extends RecyclerView.Adapter<EventArrayAdapter.Vi
                 mListener.onClick(view, getAdapterPosition());
                 removeItem(getAdapterPosition());
                     break;
+              case R.id.EnableShare2:
+                    Log.d("onclick000000", "onClick " + getLayoutPosition() + " " + textView_title.getText());
+                    mListener.onClick(view, getAdapterPosition());
+                    break;
             }
 
 
@@ -143,4 +150,7 @@ public class EventArrayAdapter extends RecyclerView.Adapter<EventArrayAdapter.Vi
 
 
 
-}}
+}
+
+
+}

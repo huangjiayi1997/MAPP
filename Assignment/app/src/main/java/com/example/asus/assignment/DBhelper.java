@@ -24,15 +24,13 @@ public class DBhelper extends SQLiteOpenHelper {
     public static final String COLUMN_TITLE = "TITLE";
     public static final String COLUMN_DATE = "DATE";
     public static final String COLUMN_TIME = "TIME";
-    public static final String COLUMN_DESCRIPTION = "DESCRIPTION";
     public static final String COLUMN_NOTIFICATION = "NOTIFICATION";
 
 
 
-    private static final String DB_NAME = "database.db";
+    private static final String DB_NAME = "database4.db";
     private static final int DB_VER = 1;
-    //notification is omitted because we are not using it yet
-    private static final String DB_CREATE = "CREATE TABLE "+ TABLE_EVENTS+ " (" + COLUMN_ID + " INTEGER PRIMARY KEY AUTOINCREMENT" + ", " + COLUMN_TITLE + " TEXT " + ", " + COLUMN_DATE + " TEXT,"+ COLUMN_TIME + " TEXT " + ", "+ COLUMN_DESCRIPTION + " TEXT) " ;
+    private static final String DB_CREATE = "CREATE TABLE "+ TABLE_EVENTS+ " (" + COLUMN_ID + " INTEGER PRIMARY KEY AUTOINCREMENT" + ", " + COLUMN_TITLE + " TEXT " + ", " + COLUMN_DATE + " TEXT,"+ COLUMN_TIME + " TEXT " + ", "+ COLUMN_NOTIFICATION + " TEXT) " ;
 
 
     public DBhelper(Context context){

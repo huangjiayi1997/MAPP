@@ -1,24 +1,26 @@
 package com.example.asus.assignment;
 
+import android.util.Log;
+
+import java.io.Serializable;
+
 /**
  * Created by ASUS on 14/11/2017.
  */
 
-public class AppEvent {
+public class AppEvent implements Serializable{
     private int ID;
     private String Title;
     private String Date;
     private String Time;
-    private String Description;
     private String Notification;
 
-    public AppEvent(int inID, String inTitle, String inDate, String inTime, String inDescription) {
+    public AppEvent(int inID, String inTitle,String inDate, String inTime, String inNotification) {
         this.ID = inID;
         this.Title = inTitle;
         this.Date = inDate;
         this.Time = inTime;
-        this.Description = inDescription;
-       // this.Notification = inNotification;
+        this.Notification = inNotification;
     }
     public int getID() {
         return ID;
@@ -33,11 +35,9 @@ public class AppEvent {
         this.Title = inTitle;
     }
     public String getDate() {
-        return Date;
-    }
-    public void setDate(String inDate) {
-        this.Date = inDate;
-    }
+        Log.d("appevent is:",Date);
+    return Date;}
+    public void setDate(String inDate) {this.Date = inDate;}
     public String getTime() {
         return Time;
     }
@@ -51,10 +51,4 @@ public class AppEvent {
         this.Notification = inNotification;
     }
 
-    public String getDescription() {
-        return Description;
-    }
-    public void setDescription(String inDescription) {
-        this.Description = inDescription;
-    }
 }

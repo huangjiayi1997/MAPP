@@ -2,8 +2,14 @@
     xmlns:app="http://schemas.android.com/apk/res-auto">
 
     <item
-        android:id="@+id/About_app"
+        android:id="@+id/action_search1"
         android:orderInCategory="100"
         app:showAsAction="always"
+        android:title="Search" />
+    <item
+        android:id="@+id/About_app"
+        android:orderInCategory="102"
+        app:showAsAction="always"
         android:title="About"/>
+
 </menu>

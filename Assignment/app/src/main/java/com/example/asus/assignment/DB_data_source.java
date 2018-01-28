@@ -5,14 +5,15 @@ import android.content.Context;
 import android.database.Cursor;
 import android.database.SQLException;
 import android.database.sqlite.SQLiteDatabase;
+import android.util.Log;
 
 /**
  * Created by ASUS on 14/11/2017.
  */
 
 public class DB_data_source {
-    //Create a variable, m_database capable of referencing the SQLiteDatabase
-    private SQLiteDatabase m_database;
+    //Create a variable, l_database capable of referencing the SQLiteDatabase
+    private SQLiteDatabase l_database;
     //Create a variable, m_dbHelper capable of helping us make the code more readable
     private DBhelper m_dbHelper;
     //Create a variable which capable of describing the running app environment
@@ -25,55 +26,56 @@ public class DB_data_source {
 
     //open data base
     public void open() throws SQLException {
-        m_database = m_dbHelper.getWritableDatabase();
+        l_database = m_dbHelper.getWritableDatabase();
     }
     //close
     public void close() {
-        m_database.close();
+        l_database.close();
     }
 
 
-    //insert
+    //insert //correct
     public void insertEvent(AppEvent AppEvent) {
-        m_database.beginTransaction();
+        l_database.beginTransaction();
         try{
             ContentValues values = new ContentValues();
             values.put(DBhelper.COLUMN_TITLE, AppEvent.getTitle());
             values.put(DBhelper.COLUMN_DATE, AppEvent.getDate());
+            Log.d("the date in datesrc is",AppEvent.getDate());
             values.put(DBhelper.COLUMN_TIME, AppEvent.getTime());
-            values.put(DBhelper.COLUMN_DESCRIPTION, AppEvent.getDescription());
-           // values.put(DBhelper.COLUMN_NOTIFICATION, AppEvent.getNotification());
+            values.put(DBhelper.COLUMN_NOTIFICATION, AppEvent.getNotification());
 
-            m_database.insert(DBhelper.TABLE_EVENTS, null, values);
+            l_database.insert(DBhelper.TABLE_EVENTS, null, values);
 
-            m_database.setTransactionSuccessful();
+            l_database.setTransactionSuccessful();
         } finally {
-            m_database.endTransaction();
+            l_database.endTransaction();
         }
     }
 
     //select
     public Cursor selectAllEvents(){
-        Cursor cursor = m_database.rawQuery("Select * from " + DBhelper.TABLE_EVENTS, null);
+        Cursor cursor = l_database.rawQuery("Select * from " + DBhelper.TABLE_EVENTS, null);
         return cursor;
     }
 
-    public Cursor selectOneEvent(int inId){
-        Cursor cursor = m_database.rawQuery("Select * from " + DBhelper.TABLE_EVENTS+" where "
-                + DBhelper.COLUMN_ID+" = " + inId, null);
+    public Cursor selectOneEvent(String calendarDate){
+        Log.d("heelo","error");
+        Cursor cursor = l_database.rawQuery("Select * from " + DBhelper.TABLE_EVENTS+" where "
+                + DBhelper.COLUMN_DATE +" =  " + calendarDate + " ", null);
+        Log.d("heelo","error2");
         return cursor;
     }
 
   //update
-    public boolean updateEvent(int inId, String title, String time,String date, String description){
+    public boolean updateEvent(int inId, String title, String time, String notification){
         ContentValues values = new ContentValues();
         int success = -1;
         values.put(DBhelper.COLUMN_TITLE, title);
         values.put(DBhelper.COLUMN_TIME,time);
-        values.put(DBhelper.COLUMN_DATE,date);
-        values.put(DBhelper.COLUMN_DESCRIPTION,description);
-     //   values.put(DBhelper.COLUMN_NOTIFICATION,notification);
-        success =  m_database.update(
+      //  values.put(DBhelper.COLUMN_DATE,date);
+        values.put(DBhelper.COLUMN_NOTIFICATION,notification);
+        success =  l_database.update(
                 DBhelper.TABLE_EVENTS,
                 values,
                 DBhelper.COLUMN_ID + " = " + inId,
@@ -88,31 +90,15 @@ public class DB_data_source {
 
     }
 
-
-
     //delete
     public boolean deleteEvent(int inId) {
         int success = -1;
-        success = m_database.delete(
+        success = l_database.delete(
                 DBhelper.TABLE_EVENTS,
                 DBhelper.COLUMN_ID + " = " + inId,
                 null
         );
         if(success != -1 && success !=0) {
-            return true;
-        } else {
-            return false;
-        }
-    }
-
-    public boolean deleteAllCustomers() {
-        int success = -1;
-        success = m_database.delete(
-                DBhelper.TABLE_EVENTS,
-                null,
-                null
-        );
-        if(success != -1 ) {
             return true;
         } else {
             return false;

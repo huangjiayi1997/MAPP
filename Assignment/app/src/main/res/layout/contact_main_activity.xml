@@ -7,15 +7,25 @@
     tools:context="com.example.asus.assignment.MainActivity"
     android:background="#e0eafc"
     >
-
-    <CalendarView
-        android:id="@+id/calendarView"
+    <Button
+        android:id="@+id/AddContactButton"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_alignParentLeft="true"
         android:layout_alignParentStart="true"
-        android:layout_alignParentTop="true"></CalendarView>
+        android:onClick="onClick"
+        android:text="Share"
+        tools:layout_editor_absoluteX="10dp"
+        tools:layout_editor_absoluteY="460dp" />
 
+    <android.support.v7.widget.RecyclerView
+        android:id="@+id/RecyclerView_ContactList"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:layout_below="@+id/AddContactButton"
+        android:scrollbars="vertical" />
 
 
 </RelativeLayout>

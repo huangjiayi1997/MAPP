@@ -23,7 +23,7 @@ public class UpdateEvent extends AppCompatActivity {
         id= Integer.parseInt(tempId);
 
         Title = getIntent().getStringExtra("Title");
-        Date = getIntent().getStringExtra("Date");
+       // Date = getIntent().getStringExtra("Date");
         Notification=getIntent().getStringExtra("Notification");
         Time=getIntent().getStringExtra("Time");
 
@@ -39,8 +39,8 @@ public class UpdateEvent extends AppCompatActivity {
 
         //for Date
         //EditText editTextMobileContact= (EditText)findViewById(R.id.EditText_MobileContact);
-        editTextDate= (EditText)findViewById(R.id.EditText_date);
-        editTextDate.setText(Date);
+        //editTextDate= (EditText)findViewById(R.id.EditText_date);
+        //editTextDate.setText(Date);
 
 
         //for time
@@ -58,7 +58,7 @@ public class UpdateEvent extends AppCompatActivity {
             public void onClick(View v) {
 
                 String EventTitle = editTextTitle.getText().toString();
-                String EventDate = editTextDate.getText().toString();
+                //String EventDate = editTextDate.getText().toString();
                 String EventTime = editTextTime.getText().toString();
                 String EventNotification= editTextNotification.getText().toString();
 
@@ -67,7 +67,7 @@ public class UpdateEvent extends AppCompatActivity {
 
         //open db
                 db.open();
-                db.updateEvent(id, EventTitle,EventTime,EventDate, EventNotification);
+                db.updateEvent(id, EventTitle,EventTime, EventNotification);
                 Toast.makeText(v.getContext(), "Event Updated", Toast.LENGTH_SHORT).show();
                 db.close();
                 finish();

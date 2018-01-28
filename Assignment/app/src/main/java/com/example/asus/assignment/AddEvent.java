@@ -4,6 +4,7 @@ import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.CheckBox;
@@ -16,12 +17,23 @@ import android.widget.Toast;
 
 public class AddEvent extends AppCompatActivity {
     //private Button AddButton;
-    private EditText NewDate, NewTime, NewTitle, NewDescription;
+    private EditText NewTime, NewTitle;
     private CheckBox NewNotification;
+    private String  EventDate;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_add_event);
+
+        findViewById(R.id.EnableShare).setOnClickListener(new View.OnClickListener(){
+            @Override
+            public void onClick(View v){
+                Intent i = new Intent(AddEvent.this,SelectContact.class);
+                Log.d("point to:","select contact page");
+                startActivity(i);
+            }
+        });
+
 
 
         findViewById(R.id.AddEventButton).setOnClickListener( new View.OnClickListener() {
@@ -33,17 +45,16 @@ public class AddEvent extends AppCompatActivity {
                 NewTime = (EditText) findViewById(R.id.NewTime);
                 String EventTime = NewTime.getText().toString();
 
-                NewDate = (EditText) findViewById(R.id.NewDate);
-                String EventDate = NewDate.getText().toString();
+                EventDate =getIntent().getStringExtra("Date");
+                Log.d("received for add event",EventDate);
+                //String EventDate = NewDate.getText().toString();
 
-                NewDescription = (EditText) findViewById(R.id.NewDescription);
-                String EventDescription = NewDescription.getText().toString();
-                /*NewNotification = (CheckBox) findViewById(R.id.NotificationBoolean);
-                String EventNotification = NewNotification.getText().toString();*/
+                NewNotification = (CheckBox) findViewById(R.id.NotificationBoolean);
+                String EventNotification = NewNotification.getText().toString();
 
 
                 DB_data_source db = new DB_data_source (v.getContext());
-                AppEvent newEvent = new AppEvent(0,EventTitle,EventDate,EventTime,EventDescription);
+                AppEvent newEvent = new AppEvent(0,EventTitle,EventDate,EventTime,EventNotification);
 
                 //open db
                 db.open();
