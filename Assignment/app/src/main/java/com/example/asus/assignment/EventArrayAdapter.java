@@ -13,6 +13,8 @@ import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.TextView;
 
+import org.w3c.dom.Text;
+
 import java.util.ArrayList;
 
 
@@ -21,10 +23,8 @@ public class EventArrayAdapter extends RecyclerView.Adapter<EventArrayAdapter.Vi
 
     private RecyclerViewClickListener mListener;
 
-    //All methods in this adapter are required for a bare minimum recyclerview adapter
     private int listItemLayout;
     private ArrayList <AppEvent> EventArrayList;
-    // Constructor of the class
     public EventArrayAdapter(int layoutId, ArrayList<AppEvent> itemList, RecyclerViewClickListener listener) {
         listItemLayout = layoutId;
         this.EventArrayList = itemList;
@@ -70,12 +70,12 @@ public class EventArrayAdapter extends RecyclerView.Adapter<EventArrayAdapter.Vi
         TextView textView_title = holder.textView_title;
         TextView textView_time = holder.textView_time;
         TextView textView_date = holder.textView_date;
-        TextView textView_notification = holder.textView_notification;
+        TextView textView_description = holder.textView_description;
 
         textView_title.setText(EventArrayList.get(listPosition).getTitle());
         textView_time.setText(EventArrayList.get(listPosition).getTime());
         textView_date.setText(EventArrayList.get(listPosition).getDate());
-        textView_notification.setText(EventArrayList.get(listPosition).getNotification());
+        textView_description.setText(EventArrayList.get(listPosition).getDescription());
         Log.d("tracker","tracker10");
 
 
@@ -84,12 +84,12 @@ public class EventArrayAdapter extends RecyclerView.Adapter<EventArrayAdapter.Vi
     }
 
     // Static inner class to initialize the views of rows
-    // i removed static infront of class viewholder
     class ViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
         public TextView textView_title;
         public TextView textView_time;
         public TextView textView_date;
-        public TextView textView_notification;
+        public TextView textView_description;
+        //public TextView textView_notification;
         public Button button_edit;
         public Button button_delete;
         public Button button_share;
@@ -102,21 +102,18 @@ public class EventArrayAdapter extends RecyclerView.Adapter<EventArrayAdapter.Vi
             super(itemView);
             mListener = listener;
 
-            //Get the three variables, textView_name, textView_mobileContact and
-            //button_edit to reference the elements which are defined the the XML in
-            //the customer_liest_item.xml.
+
             textView_title = (TextView) itemView.findViewById(R.id.TextView_title);
             textView_time = (TextView) itemView.findViewById(R.id.TextView_time);
             textView_date=(TextView)itemView.findViewById(R.id.TextView_date);
-            textView_notification=(TextView)itemView.findViewById(R.id.TextView_Notification);
+           // textView_notification=(TextView)itemView.findViewById(R.id.TextView_Notification);
+            textView_description=(TextView)itemView.findViewById(R.id.TextView_description);
 
             //for edit in list
             button_edit = (Button) itemView.findViewById(R.id.Button_Edit);
             button_delete=(Button) itemView.findViewById(R.id.Button_Delete);
             button_share=(Button) itemView.findViewById(R.id.EnableShare2);
 
-
-            //Defined a click listener only for the button which has the edit icon
             button_edit.setOnClickListener(this);
             button_delete.setOnClickListener(this);
             button_share.setOnClickListener(this);

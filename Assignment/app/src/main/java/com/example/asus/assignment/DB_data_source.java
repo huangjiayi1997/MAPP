@@ -12,11 +12,14 @@ import android.util.Log;
  */
 
 public class DB_data_source {
+<<<<<<< HEAD
     //Create a variable, l_database capable of referencing the SQLiteDatabase
     private SQLiteDatabase l_database;
     //Create a variable, m_dbHelper capable of helping us make the code more readable
+=======
+    private SQLiteDatabase m_database;
+>>>>>>> 6048a07e53429beb951f2fc6bb62a425e74764bd
     private DBhelper m_dbHelper;
-    //Create a variable which capable of describing the running app environment
     private Context m_context;
 
     public DB_data_source(Context context){
@@ -53,7 +56,6 @@ public class DB_data_source {
         }
     }
 
-    //select
     public Cursor selectAllEvents(){
         Cursor cursor = l_database.rawQuery("Select * from " + DBhelper.TABLE_EVENTS, null);
         return cursor;
@@ -67,8 +69,13 @@ public class DB_data_source {
         return cursor;
     }
 
+<<<<<<< HEAD
   //update
     public boolean updateEvent(int inId, String title, String time, String notification){
+=======
+
+    public boolean updateEvent(int inId, String title, String time,String date, String description){
+>>>>>>> 6048a07e53429beb951f2fc6bb62a425e74764bd
         ContentValues values = new ContentValues();
         int success = -1;
         values.put(DBhelper.COLUMN_TITLE, title);
@@ -90,7 +97,13 @@ public class DB_data_source {
 
     }
 
+<<<<<<< HEAD
     //delete
+=======
+
+
+
+>>>>>>> 6048a07e53429beb951f2fc6bb62a425e74764bd
     public boolean deleteEvent(int inId) {
         int success = -1;
         success = l_database.delete(

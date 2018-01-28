@@ -11,8 +11,8 @@ import android.widget.Toast;
 
 public class UpdateEvent extends AppCompatActivity {
     private int id;
-    private String Notification,Title,Date,Time;
-    private EditText editTextTitle,editTextDate,editTextTime,editTextNotification;
+    private String /*Notification*/Description,Title,Date,Time;
+    private EditText editTextTitle,editTextDate,editTextTime,editTextDescription;/*editTextNotification;*/
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -23,13 +23,18 @@ public class UpdateEvent extends AppCompatActivity {
         id= Integer.parseInt(tempId);
 
         Title = getIntent().getStringExtra("Title");
+<<<<<<< HEAD
        // Date = getIntent().getStringExtra("Date");
         Notification=getIntent().getStringExtra("Notification");
+=======
+        Date = getIntent().getStringExtra("Date");
+        //Notification=getIntent().getStringExtra("Notification");
+>>>>>>> 6048a07e53429beb951f2fc6bb62a425e74764bd
         Time=getIntent().getStringExtra("Time");
+        Description=getIntent().getStringExtra("Description");//NEED TO FIND THIS NAME  WAOIT
 
 
         //After collecting the data, the data is used to display inside
-        //the correct controls
 
         //for title
         editTextTitle= (EditText)findViewById(R.id.EditText_title);
@@ -49,10 +54,12 @@ public class UpdateEvent extends AppCompatActivity {
 
 
         //for notification
-        editTextNotification=(EditText)findViewById((R.id.EditText_notification));
-        editTextNotification.setText(Notification);
+/*        editTextNotification=(EditText)findViewById((R.id.EditText_notification));
+        editTextNotification.setText(Notification);*/
 
-
+        //for description
+        editTextDescription=(EditText) findViewById(R.id.EditText_description); // whr the findview get this attribute like which file xml which yay
+        editTextDescription.setText(Description);
         findViewById(R.id.Button_Save).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -60,23 +67,24 @@ public class UpdateEvent extends AppCompatActivity {
                 String EventTitle = editTextTitle.getText().toString();
                 //String EventDate = editTextDate.getText().toString();
                 String EventTime = editTextTime.getText().toString();
-                String EventNotification= editTextNotification.getText().toString();
+                String EventDescription= editTextDescription.getText().toString();
 
         //updating db
         DB_data_source db = new DB_data_source (v.getContext());
 
         //open db
                 db.open();
+<<<<<<< HEAD
                 db.updateEvent(id, EventTitle,EventTime, EventNotification);
+=======
+                db.updateEvent(id, EventTitle,EventTime,EventDate, EventDescription);
+>>>>>>> 6048a07e53429beb951f2fc6bb62a425e74764bd
                 Toast.makeText(v.getContext(), "Event Updated", Toast.LENGTH_SHORT).show();
                 db.close();
                 finish();
 
             };});}
 
-    //-------Need these code (onBackPressed, onOptionsItemSelected) to handle user action when
-    // they click the back arrow icon in action bar
-    //                 and the mobile phone's default back button .
     @Override
     public void onBackPressed() {
         Intent data = new Intent();
@@ -97,5 +105,5 @@ public class UpdateEvent extends AppCompatActivity {
         }
         return true;
     }
-    //----------------------------------------------------------------------------------------------------
+
 }

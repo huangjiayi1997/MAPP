@@ -18,17 +18,24 @@ import java.io.OutputStream;
  */
 
 public class DBhelper extends SQLiteOpenHelper {
-    //declaration of database variables
     public static final String TABLE_EVENTS ="EVENTS";
     public static final String COLUMN_ID = "ID";
     public static final String COLUMN_TITLE = "TITLE";
     public static final String COLUMN_DATE = "DATE";
     public static final String COLUMN_TIME = "TIME";
+<<<<<<< HEAD
     public static final String COLUMN_NOTIFICATION = "NOTIFICATION";
 
 
 
     private static final String DB_NAME = "database4.db";
+=======
+    public static final String COLUMN_DESCRIPTION = "DESCRIPTION";
+ //   public static final String COLUMN_NOTIFICATION = "NOTIFICATION";
+
+
+    private static final String DB_NAME = "database2.db";
+>>>>>>> 6048a07e53429beb951f2fc6bb62a425e74764bd
     private static final int DB_VER = 1;
     private static final String DB_CREATE = "CREATE TABLE "+ TABLE_EVENTS+ " (" + COLUMN_ID + " INTEGER PRIMARY KEY AUTOINCREMENT" + ", " + COLUMN_TITLE + " TEXT " + ", " + COLUMN_DATE + " TEXT,"+ COLUMN_TIME + " TEXT " + ", "+ COLUMN_NOTIFICATION + " TEXT) " ;
 

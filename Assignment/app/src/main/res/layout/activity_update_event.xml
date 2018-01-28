@@ -5,13 +5,13 @@
 
     <LinearLayout android:layout_height="fill_parent" android:layout_width="match_parent" android:orientation="vertical">
 
-    <EditText android:layout_height="wrap_content" android:layout_width="match_parent" android:id="@+id/EditText_title" android:textSize="10pt" > </EditText>
+    <EditText android:layout_height="wrap_content" android:layout_width="match_parent"  android:hint="Title" android:id="@+id/EditText_title" android:textSize="10pt" > </EditText>
 
-    <EditText android:layout_height="wrap_content" android:layout_width="match_parent" android:id="@+id/EditText_time" android:textSize="10pt"> </EditText>
+    <EditText android:layout_height="wrap_content" android:layout_width="match_parent" android:hint="Date" android:id="@+id/EditText_time" android:textSize="10pt"> </EditText>
 
-        <EditText android:layout_height="wrap_content" android:layout_width="match_parent" android:id="@+id/EditText_date" android:textSize="10pt" > </EditText>
+        <EditText android:layout_height="wrap_content" android:layout_width="match_parent" android:hint="Time" android:id="@+id/EditText_date" android:textSize="10pt" > </EditText>
 
-        <EditText android:layout_height="wrap_content" android:layout_width="match_parent" android:id="@+id/EditText_notification" android:textSize="10pt"> </EditText>
+        <EditText android:layout_height="wrap_content" android:layout_width="match_parent" android:hint="Description" android:id="@+id/EditText_description" android:textSize="10pt"> </EditText>
 
 
 

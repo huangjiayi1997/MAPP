@@ -30,8 +30,13 @@ public class DeleteEvent extends AppCompatActivity {
         String tempId =  getIntent().getStringExtra("ID");
         String temppos =  getIntent().getStringExtra("position");
 
+<<<<<<< HEAD
         //problem: tempid cannot be retrieve, its null.(resolved)
         position=Integer.parseInt(temppos);
+=======
+
+        position=Integer.parseInt(tempPos);
+>>>>>>> 6048a07e53429beb951f2fc6bb62a425e74764bd
         id= Integer.parseInt(tempId);
 
         Log.d("Delete Event","ID"+id);
@@ -54,7 +59,11 @@ public class DeleteEvent extends AppCompatActivity {
                 db.close();
                 finish();
                 Log.d("Button_delete","error C"+position);
+<<<<<<< HEAD
                 //m_contactArrayAdapter.removeItem(position);
+=======
+
+>>>>>>> 6048a07e53429beb951f2fc6bb62a425e74764bd
 
             }});}
     }

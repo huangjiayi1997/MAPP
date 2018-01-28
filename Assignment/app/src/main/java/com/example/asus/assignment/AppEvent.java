@@ -15,7 +15,12 @@ public class AppEvent implements Serializable{
     private String Time;
     private String Notification;
 
+<<<<<<< HEAD
     public AppEvent(int inID, String inTitle,String inDate, String inTime, String inNotification) {
+=======
+
+    public AppEvent(int inID, String inTitle, String inDate, String inTime, String inDescription) {
+>>>>>>> 6048a07e53429beb951f2fc6bb62a425e74764bd
         this.ID = inID;
         this.Title = inTitle;
         this.Date = inDate;
